@@ -42,7 +42,7 @@ export default function MentorPage() {
 
   const addMentor = async () => {
     if (!form.name.trim()||!form.role.trim()) return
-    try { await fetch("http://localhost:5000/mentors/add",{ method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify(form) }) } catch {}
+    try { await fetch("https://intern-portal-backend-dw9j.onrender.com/mentors/add",{ method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify(form) }) } catch {}
     setMentors(p=>[...p,{ ...form, id:Date.now(), completed:0, upcoming:0, avatar:form.name.charAt(0).toUpperCase(), color:["#7C3AED","#ec4899","#f59e0b","#22c55e","#06B6D4"][p.length%5] }])
     setForm({ name:"", role:"", company:"", experience:"", availability:"Mon–Fri\n9:00 AM–5:00 PM", expertise:[], available:true }); setShowAdd(false)
   }

@@ -14,7 +14,7 @@ import { IconBadge } from "../../../lib/iconBadge"
 import { NOTIF_TYPE_ICONS, ACTIVITY_MODULE_ICONS } from "../../../lib/uiIcons"
 import { ResponsiveContainer, AreaChart, Area, Tooltip, CartesianGrid, XAxis, YAxis, BarChart, Bar, PieChart, Pie, Cell, LineChart, Line } from "recharts"
 
-const BASE = "http://localhost:5000"
+const BASE = "http://https://intern-portal-backend-dw9j.onrender.com"
 const G = { background:"rgba(17,25,40,0.85)", border:"1px solid rgba(255,255,255,0.08)", borderRadius:"14px" }
 const inp = { background:"rgba(255,255,255,0.06)", border:"1px solid rgba(255,255,255,0.1)", borderRadius:"10px", padding:"8px 12px", fontSize:"12px", color:"white", outline:"none", width:"100%" }
 

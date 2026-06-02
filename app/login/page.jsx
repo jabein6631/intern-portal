@@ -30,13 +30,16 @@ function Login() {
     setLoading(true);
 
     try {
-      const res = await fetch("http://localhost:5000/auth/login", {
+      const res = await fetch("https://intern-portal-backend-dw9j.onrender.com/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
       });
 
       const data = await res.json();
+      alert(JSON.stringify(data, null, 2));
+
+
 
       if (res.ok) {
         const role = (data.user.role || "intern").toLowerCase()

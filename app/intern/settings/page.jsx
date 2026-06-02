@@ -86,7 +86,7 @@ export default function SettingsPage() {
     if(nw!==conf){setPwErr("Passwords do not match");return}
     const user=getUser()
     try {
-      const res = await fetch("http://localhost:5000/auth/change-password",{ method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify({ userId:user.id, currentPassword:cur, newPassword:nw }) })
+      const res = await fetch("https://intern-portal-backend-dw9j.onrender.com/auth/change-password",{ method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify({ userId:user.id, currentPassword:cur, newPassword:nw }) })
       const data = await res.json()
       if(res.ok){ setPwMsg("Saved! Password updated!"); setCur(""); setNw(""); setConf("") } else setPwErr(data.error||"Update failed")
     } catch { setPwErr("Cannot connect to server.") }
@@ -249,7 +249,7 @@ export default function SettingsPage() {
           <div className="bg-[#111827] border border-red-500/20 rounded-xl p-3">
             <p className="text-xs font-medium text-red-400 mb-1">Delete Account</p>
             <p className="text-[9px] text-gray-400 mb-2">Permanently delete your account and all data. This cannot be undone.</p>
-            <button onClick={async()=>{ if(!confirm("Are you sure? This will permanently delete your account.")) return; const user=getUser(); if(user.id) await fetch(`http://localhost:5000/auth/profile/${user.id}`,{method:"DELETE",headers:{Authorization:`Bearer ${localStorage.getItem("token")}`}}).catch(()=>{}); localStorage.removeItem("token"); localStorage.removeItem("user"); router.push("/signup") }} className="flex items-center gap-2 px-4 py-1.5 rounded-lg bg-red-500/20 border border-red-500/40 text-red-400 text-[10px]">
+            <button onClick={async()=>{ if(!confirm("Are you sure? This will permanently delete your account.")) return; const user=getUser(); if(user.id) await fetch(`https://intern-portal-backend-dw9j.onrender.com/auth/profile/${user.id}`,{method:"DELETE",headers:{Authorization:`Bearer ${localStorage.getItem("token")}`}}).catch(()=>{}); localStorage.removeItem("token"); localStorage.removeItem("user"); router.push("/signup") }} className="flex items-center gap-2 px-4 py-1.5 rounded-lg bg-red-500/20 border border-red-500/40 text-red-400 text-[10px]">
               <Trash2 size={11}/> Delete Account
             </button>
           </div>

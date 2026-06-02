@@ -204,7 +204,7 @@ export default function AttendancePage() {
       if (checkInId) {
         // Use sendBeacon for reliability on page close
         const blob = new Blob([JSON.stringify({checkOut:timeStr})], {type:"application/json"})
-        navigator.sendBeacon?.(`http://localhost:5000/intern/attendance/checkout/${checkInId}`, blob)
+        navigator.sendBeacon?.(`https://intern-portal-backend-dw9j.onrender.com/intern/attendance/checkout/${checkInId}`, blob)
       }
       // Save checkout time to localStorage so it persists
       try {

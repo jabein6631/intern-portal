@@ -11,7 +11,7 @@ import {
 import { IconBadge } from "../../../lib/iconBadge"
 import { ResponsiveContainer, AreaChart, Area, Tooltip, CartesianGrid, XAxis, YAxis, BarChart, Bar, PieChart, Pie, Cell, LineChart, Line } from "recharts"
 
-const BASE = "http://localhost:5000/evaluation-portal"
+const BASE = "https://intern-portal-backend-dw9j.onrender.com/evaluation-portal"
 const G = { background:"rgba(17,25,40,0.85)", border:"1px solid rgba(255,255,255,0.08)", borderRadius:"14px" }
 const inp = { background:"rgba(255,255,255,0.06)", border:"1px solid rgba(255,255,255,0.1)", borderRadius:"10px", padding:"8px 12px", fontSize:"12px", color:"white", outline:"none", width:"100%" }
 
@@ -672,14 +672,14 @@ function EvalSettings() {
   useEffect(() => { fetch(`${BASE}/settings`).then(r=>r.json()).then(d=>{ if(d.evaluatorName) setSettings(d) }).catch(()=>{}) }, [])
   const save = async () => {
     await fetch(`${BASE}/settings`,{method:"PUT",headers:{"Content-Type":"application/json"},body:JSON.stringify(settings)}).catch(()=>{})
-    const u = getUser(); if(u.id) await fetch(`http://localhost:5000/auth/profile/${u.id}`,{method:"PUT",headers:{"Content-Type":"application/json"},body:JSON.stringify({fullName:settings.evaluatorName,phone:settings.phone})}).catch(()=>{})
+    const u = getUser(); if(u.id) await fetch(`https://intern-portal-backend-dw9j.onrender.com/auth/profile/${u.id}`,{method:"PUT",headers:{"Content-Type":"application/json"},body:JSON.stringify({fullName:settings.evaluatorName,phone:settings.phone})}).catch(()=>{})
     const updated = {...u,fullName:settings.evaluatorName}; localStorage.setItem("user",JSON.stringify(updated))
     setSaved(true); setTimeout(()=>setSaved(false),2000)
   }
   const changePw = async () => {
     if (!cur||!nw||nw!==conf){setPwMsg("Check fields");return}
     const u = getUser()
-    const res = await fetch(`http://localhost:5000/auth/change-password`,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({userId:u.id,currentPassword:cur,newPassword:nw})}).catch(()=>({ok:false}))
+    const res = await fetch(`https://intern-portal-backend-dw9j.onrender.com/auth/change-password`,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({userId:u.id,currentPassword:cur,newPassword:nw})}).catch(()=>({ok:false}))
     setPwMsg(res.ok?"Password changed!":"Failed — check current password")
     if(res.ok){setCur("");setNw("");setConf("")}
   }

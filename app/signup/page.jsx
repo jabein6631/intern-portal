@@ -35,7 +35,7 @@ function Signup() {
     setLoading(true);
     setServerError("");
     try {
-      const res = await fetch("http://localhost:5000/auth/register", {
+      const res = await fetch("https://intern-portal-backend-dw9j.onrender.com/auth/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ fullName: formData.fullName, email: formData.email, password: formData.password, role: formData.role }),

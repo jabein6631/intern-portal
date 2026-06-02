@@ -145,7 +145,7 @@ export default function InternDashboard() {
 
     try {
       // Call Groq via backend — free tier, no quota issues
-      const res = await fetch("http://localhost:5000/ai/chat", {
+      const res = await fetch("https://intern-portal-backend-dw9j.onrender.com/ai/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: userInput })
