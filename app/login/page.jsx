@@ -37,7 +37,7 @@ function Login() {
       });
 
       const data = await res.json();
-      alert(JSON.stringify(data, null, 2));
+     
 
 
 
